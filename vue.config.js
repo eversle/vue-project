@@ -5,8 +5,8 @@ const Components = require('unplugin-vue-components/webpack')
 const { ElementPlusResolver } = require('unplugin-vue-components/resolvers')
 module.exports = defineConfig({
   transpileDependencies: true,
-  configureWebpack:{
-    plugins:[
+  configureWebpack: {
+    plugins: [
       require('unplugin-element-plus/webpack')({
         libs: [{
           libraryName: 'element-plus',
@@ -16,18 +16,19 @@ module.exports = defineConfig({
           },
         },]
       }),
-        AutoImport({
-      resolvers: [
-       
-        ElementPlusResolver()
-      ]
-    }),
-    Components({
-      resolvers: [
-        
-        ElementPlusResolver()
-      ]
-    }),
+      AutoImport({
+        imports: ['vue', 'vue-router'],
+        resolvers: [
+
+          ElementPlusResolver()
+        ]
+      }),
+      Components({
+        resolvers: [
+
+          ElementPlusResolver()
+        ]
+      }),
     ]
   }
 

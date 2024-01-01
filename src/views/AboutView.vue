@@ -5,8 +5,8 @@
   </div>
 </template>
 <script setup>
-// import  { useStore } from 'pinia'
-const store = useStore()
+import  { mainStore } from '@/store/index'
+const store = mainStore()
 
 let msg = store.msg
 
