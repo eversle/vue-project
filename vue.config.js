@@ -7,6 +7,8 @@ const JavaScriptObfuscator = require("webpack-obfuscator");
 module.exports = defineConfig({
   transpileDependencies: true,
   lintOnSave: false, // 添加这行来禁用 ESLint
+  productionSourceMap: false, // 生产环境禁用 source map
+  publicPath: process.env.NODE_ENV === "development" ? "/" : process.env.VUE_APP_PATH,
   configureWebpack: {
     plugins: [
       require("unplugin-element-plus/webpack")({
@@ -28,6 +30,7 @@ module.exports = defineConfig({
         resolvers: [ElementPlusResolver()],
       }),
       //代码混淆
+      process.env.NODE_ENV === 'production' ?
       new JavaScriptObfuscator(
         {
           // 压缩,无换行
@@ -70,7 +73,39 @@ module.exports = defineConfig({
           unicodeEscapeSequence: true,
         },
         []
-      ),
+      ) : '',
     ],
   },
+  devServer:{
+    open:false,
+    host:'0.0.0.0',
+    port :9527,
+    https:false,
+    proxy:{
+      '/dev-api':{
+        target:'http://localhost:8888',
+        ws:true,
+        changeOrigin:true,
+        pathRewrite:{
+          '^/dev-api': ''   //本身的接口地址没有 '/api' 这种通用前缀，所以要rewrite，如果本身有则去掉 
+        }  
+      },
+      '/pro-api':{
+        target:'http://localhost:8888',
+        ws:true,
+        changeOrigin:true,
+        pathRewrite:{
+          '^/pro-api': ''   //本身的接口地址没有 '/api' 这种通用前缀，所以要rewrite，如果本身有则去掉 
+        }  
+      },
+      '/test-api':{
+        target:'http://localhost:8888',
+        ws:true,
+        changeOrigin:true,
+        pathRewrite:{
+          '^/test-api': ''   //本身的接口地址没有 '/api' 这种通用前缀，所以要rewrite，如果本身有则去掉 
+        }  
+      }
+    }
+  }
 });

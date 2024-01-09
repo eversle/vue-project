@@ -85,13 +85,14 @@ Set-ExecutionPolicy RemoteSigned
 //2、在桌面右键vscode图标，『属性』选择『兼容性』，勾选『以管理员身份运行此程序』。
 ```
 + 4
-```
 
-```
+## 环境变量配置
+ env.development等文件修改baseURL
+ vue.config.js中默认代理
+ axios配置的baseURL
+
 + 5
-```
 
-```
 + 6
 ```
 
