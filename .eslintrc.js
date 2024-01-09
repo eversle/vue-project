@@ -1,3 +1,11 @@
+/*
+ * @Author: eversle everslevivo@gmail.com
+ * @Date: 2024-01-02 08:10:23
+ * @LastEditors: eversle everslevivo@gmail.com
+ * @LastEditTime: 2024-01-09 14:45:51
+ * @FilePath: \vue-project\.eslintrc.js
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 module.exports = {
   root: true,
   env: {
@@ -13,12 +21,12 @@ module.exports = {
     'generator-star-spacing': 'off',
     'no-mixed-operators': 0,
     'vue/max-attributes-per-line': [
-      2,
-      {
-        'singleline': 5,
-        'multiline': {
-          'max': 1,
-          'allowFirstLine': false
+      "error", {
+        "singleline": {
+          "max": 1
+        },      
+        "multiline": {
+          "max": 1
         }
       }
     ],
@@ -62,7 +70,7 @@ module.exports = {
    }]
   },
   parserOptions: {
-    parser: 'babel-eslint'
+    parser: '@babel/eslint-parser'
   },
   overrides: [
     {

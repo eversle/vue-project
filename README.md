@@ -3,16 +3,22 @@
 ## Project setup
 ```
 yarn install
+ <!-- or -->
+pnpm install
 ```
 
 ### Compiles and hot-reloads for development
 ```
 yarn serve
+ <!-- or -->
+pnpm serve
 ```
 
 ### Compiles and minifies for production
 ```
 yarn build
+ <!-- or -->
+pnpm build
 ```
 
 ### Lints and fixes files
